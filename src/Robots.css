@@ -1,0 +1,131 @@
+.Robots header button, .ReactModal__Content button {
+  background: var(--link-color);
+  color: white;
+  box-sizing: border-box;
+  border: 0.1em solid var(--link-color);
+  border-radius: var(--small-border-radius);
+  outline: none;
+  padding: 0.5em 1em;
+  font-weight: 600;
+  font-size: inherit;
+  line-height: 1;
+  transition: all 0.15s ease-in-out;
+}
+
+.Robots header button:hover, .ReactModal__Content button:hover {
+  background: white;
+  color: var(--link-color);
+}
+
+.Robots table {
+  width: 100%;
+  border-spacing: 0;
+  line-height: 4.5;
+}
+
+/* header cells */
+.Robots table th {
+  font-weight: 500;
+}
+
+/* each row */
+.Robots table tr {
+  text-align: left;
+}
+
+/* even rows */
+.Robots table tr:nth-child(even) {
+  background-color: var(--even-row);
+}
+
+.Robots table tr:hover {
+  background-color: var(--panel-bg);
+}
+
+/* each cell */
+.Robots table td {
+  color: var(--dark-text);
+}
+
+/* first and last cells in each row (not header) */
+.Robots table td:first-of-type, .Robots table td:last-of-type {
+  color: var(--link-color);
+  font-weight: 400;
+  margin-left: 2em;
+}
+
+/* header and first cell in each row */
+.Robots table th:first-of-type, .Robots table td:first-of-type {
+  padding-left: 2em;
+}
+
+/* last cell in each row */
+.Robots table td:last-of-type {
+  text-align: right;
+  padding-right: 1em;
+}
+
+.Robots table button {
+  background: none;
+  color: var(--link-color);
+  border: none;
+  outline: none;
+  font-size: 1.75em;
+  transition: all 0.15s ease-in-out;
+}
+
+.Robots table button:hover svg, .ReactModal__Content .closeIcon:hover {
+  color: white;
+  filter:
+    drop-shadow(-1px -1px 0 var(--link-color))
+    drop-shadow(1px -1px 0 var(--link-color))
+    drop-shadow(-1px 1px 0 var(--link-color))
+    drop-shadow(1px 1px 0 var(--link-color))
+    drop-shadow(1px 1px 0 var(--link-color));
+}
+
+.ReactModal__Content {
+  width: 25em;
+  height: 8em;
+  margin: auto;
+  color: var(--dark-text);
+  border-radius: var(--small-border-radius);
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+}
+
+.ReactModal__Content header {
+  color: var(--base-color);
+}
+
+.ReactModal__Content h3 {
+  margin-top: 0;
+}
+
+.ReactModal__Content .closeButton {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  padding: 0 0.2em;
+}
+
+.ReactModal__Content button {
+  position: absolute;
+  bottom: 1.75em;
+  right: 1.25em;
+  padding: 0.6em 2.25em;
+  border-radius: 2em;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: all 0.3s ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}

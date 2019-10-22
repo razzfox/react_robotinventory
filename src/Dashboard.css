@@ -1,0 +1,26 @@
+.Dashboard .eventCard {
+  border: 1px solid var(--dark-line);
+  border-radius: var(--tiny-border-radius);
+  transition: border 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin: 0.55em 1rem 0.55rem 2rem;
+  padding: 1.55rem 1rem 1.55rem 1.5rem;
+}
+
+.Dashboard .eventCard:hover {
+  border: 1px solid var(--link-color);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+}
+
+.Dashboard .eventCard header {
+  color: var(--dark-line);
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem
+}
+
+.Dashboard .eventCard header h4 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.7em;
+}

@@ -1,0 +1,26 @@
+:root {
+  /* colors */
+  --base-color: rgb(49, 52, 66);
+  --link-color: rgb(0, 143, 161);
+  --panel-bg: rgb(237, 241, 244);
+  --light-line: rgb(221, 223, 225);
+  --even-row: rgb(250, 250, 250);
+  --dark-line: rgb(151, 151, 151);
+  --dark-text: rgb(106, 109, 112);
+
+  /* sizes */
+  --left-panel: 21em;
+  --right-panel: 29em;
+  --tiny-border-radius: 4px;
+  --small-border-radius: 0.2em;
+}
+
+body {
+  margin: 0;
+  color: var(--base-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

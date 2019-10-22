@@ -1,0 +1,110 @@
+.AddRobot {
+  position: fixed;
+  top: 0;
+  /* right and width must match */
+  right: calc(var(--right-panel) * -1);
+  width: var(--right-panel);
+  height: 100%;
+  background-color: var(--panel-bg);
+  transition: transform 0.4s ease-in-out;
+}
+
+.AddRobot.show {
+  transform: translateX(-100%);
+}
+
+.AddRobot header svg.closeIcon:hover {
+  color: white;
+  filter:
+    drop-shadow(-1px -1px 0 var(--link-color))
+    drop-shadow(1px -1px 0 var(--link-color))
+    drop-shadow(-1px 1px 0 var(--link-color))
+    drop-shadow(1px 1px 0 var(--link-color))
+    drop-shadow(1px 1px 0 var(--link-color));
+}
+
+.AddRobot header .closeButton {
+  padding: 0 1em;
+}
+
+
+.AddRobot section {
+  padding: 0 2em;
+}
+
+.AddRobot section:last-of-type {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.AddRobot label {
+  text-transform: uppercase;
+  font-size: 0.85em;
+  font-weight: 500;
+  line-height: 4;
+}
+
+.AddRobot input, .AddRobot select {
+  outline: none;
+  height: 2.5em;
+  display: block;
+  margin-bottom: 0.8em;
+  border-radius: var(--tiny-border-radius);
+  border: 1px solid var(--light-line);
+}
+
+.AddRobot input:hover, .AddRobot input:focus, .AddRobot select:hover, .AddRobot select:focus {
+  border: 1px solid var(--link-color);
+}
+
+
+.AddRobot input {
+  width: calc(var(--right-panel) - 4em);
+  padding: 0 0 0 1em;
+  font-size: 1.1em;
+}
+
+.AddRobot select {
+  height: 3em;
+  width: var(--right-panel);
+  padding: 0 1em;
+  margin: 0;
+  color: var(--dark-line);
+  background: none;
+  background-color: white;
+}
+
+.AddRobot button {
+  background: var(--link-color);
+  color: white;
+  box-sizing: border-box;
+  border: 0.1em solid var(--link-color);
+  border-radius: var(--small-border-radius);
+  outline: none;
+  padding: 0.5em 1.2em;
+  margin: 0 0.5em;
+  font-weight: 600;
+  font-size: inherit;
+  line-height: 1;
+  transition: all 0.15s ease-in-out;
+}
+
+.AddRobot button:hover {
+  background: white;
+  color: var(--link-color);
+}
+
+.AddRobot button.cancel {
+  background: none;
+  color: var(--link-color);
+  box-sizing: border-box;
+  border: 0.1em solid var(--link-color);
+  font-weight: 500;
+}
+
+.AddRobot button.cancel:hover {
+  background: white;
+  /* color: white; */
+}

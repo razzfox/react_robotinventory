@@ -1,0 +1,126 @@
+html, body, .InventoryManager {
+  height: 100%;
+}
+
+.InventoryManager {
+  display: flex;
+  flex-direction: row;
+}
+
+.InventoryManager nav {
+  position: fixed;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: var(--left-panel);
+  background-color: var(--panel-bg);
+}
+
+.InventoryManager nav section {
+  border-bottom: 1px solid var(--light-line);
+  padding-bottom: 0.5em;
+}
+
+.InventoryManager nav header {
+  background-color: var(--base-color);
+  padding: 0 2em;
+  height: 6em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+
+.InventoryManager ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin-block-end: 2em;
+}
+
+.InventoryManager nav li .fa-icon {
+  margin: 0 1em;
+}
+
+.InventoryManager nav li {
+  color: var(--base-color);
+  border-radius: var(--small-border-radius);
+  margin: 1em;
+  line-height: 3em;
+  transition: all 0.15s ease-in-out;
+}
+
+.InventoryManager nav .selected li {
+  background-color: var(--link-color);
+  color: white;
+}
+
+.InventoryManager nav a:hover li {
+  background-color: var(--link-color);
+  color: white;
+}
+
+/* remove browser link decorations */
+.InventoryManager a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.InventoryManager select {
+  margin: 1em;
+  height: 3em;
+  padding: 0 0 0 1em;
+  width: calc(100% - 2em);
+  font-size: 1em;
+  font-weight: 500;
+  outline: none;
+  color: var(--base-color);
+  box-sizing: border-box;
+  border-radius: var(--tiny-border-radius);
+  border: 1px solid rgba(0,0,0,0);
+  transition: all 0.15s ease-in-out;
+  
+  /* remove arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* draw new arrow */
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA50lEQVR4Xt2MQWqEQBBFK4oLcaEbEQWNuNKFtuABJjeYHCVHyxHmBp0cIWsX3XvFTn0oQoOEYbbz4dHVVf9/ehIty3Jl0gf8KTIETdN0UUo5fvU4jndL4IFXMhcahsEwTtB93/9bghs8nt8E+75/bNtGwszcuq47lWCHm3gIIEtQ27bXpmkM4wRd1/VfCWbsvLtBhnxVVaXKsjSME0xRFIo57eEl0Qt5yvNcHcdx4zGTlcXj/4MgeFvX9ftcIGRZ9solnzzOjK8vDr9ba3/onpIkSeM41owTNHb0iKIoSsMw1AAzPa9+Ab+Vat2gkD80AAAAAElFTkSuQmCC)
+    no-repeat 95% 50%;
+}
+
+.InventoryManager select:hover {
+  border: 1px solid var(--link-color);
+}
+
+.InventoryManager main {
+  flex: 1;
+  padding-left: var(--left-panel);
+}
+
+.InventoryManager main div > header {
+  height: 6em;
+  display: flex;
+  align-items: center;
+}
+
+.InventoryManager main div > header > * {
+  margin: 0 2rem;
+}
+
+.InventoryManager main > div > header {
+  /* place border inside div */
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--dark-line);
+}
+
+.InventoryManager main div > header :first-child {
+  flex: 1;
+  font-weight: 500;
+  font-size: 2em;
+}
+
+.InventoryManager main div > h3 {
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  font-size: 1.25m;
+}
