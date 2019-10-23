@@ -69,12 +69,18 @@ class InventoryManager extends Component {
   }
 
   addRobot = robot => this.setState(state => ({
-    robotList: [...state.robotList, robot],
+    robotList: [...state.robotList, {
+        name: robot.name || 'Untitled Robot',
+        location: robot.location || 'San Francisco',
+        id: robot.id || `r${state.robotList.length + 1}`,
+        companyID: this.props.match.params.companyID,
+      }
+    ],
     eventList: [...state.eventList,
       {
-        name: `Added ${robot.name}`,
+        name: `Added ${robot.name || 'Untitled Robot'}`,
         id: `e${state.eventList.length + 1}`,
-        companyID: robot.companyID,
+        companyID: this.props.match.params.companyID,
         date: new Date().toISOString(),
         type: 'Robots'
       }
@@ -154,16 +160,14 @@ class InventoryManager extends Component {
             render={routeProps =>
               <Robots
                 {...routeProps}
-                companyID={this.props.match.params.companyID}
                 addRobot={this.addRobot}
                 deleteRobot={this.deleteRobot}
-                robotList={selectedCompanyRobotList} />}/>
+                robotList={selectedCompanyRobotList} />} />
           <Route
             path={this.dashboardRoute}
             render={routeProps =>
               <Dashboard
                 {...routeProps}
-                companyID={this.props.match.params.companyID}
                 eventList={selectedCompanyEventList} />} />
         </Switch>
       </main>

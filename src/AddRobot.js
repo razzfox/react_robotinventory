@@ -32,8 +32,7 @@ class AddRobot extends Component {
     let robot = {
       name: this.state.name,
       location: this.state.location,
-      id: this.state.id,
-      companyID: this.props.companyID
+      id: this.state.id
     }
     // Add Robot
     this.props.addRobot(robot)
@@ -83,7 +82,7 @@ class AddRobot extends Component {
             Robot ID
             <input
               name='id'
-              placeholder='i.e. 1234567890'
+              placeholder='i.e. abc-123 (optional)'
               value={this.state.id}
               onChange={this.inputStateUpdate} />
           </label>

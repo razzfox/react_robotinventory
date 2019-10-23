@@ -89,8 +89,7 @@ class Robots extends Component {
         <AddRobot
           ref='AddRobotTray'
           toggleAddRobotTray={this.toggleAddRobotTray}
-          addRobot={this.props.addRobot}
-          companyID={this.props.companyID} />
+          addRobot={this.props.addRobot} />
 
         <ReactModal 
           isOpen={this.state.showModal}
