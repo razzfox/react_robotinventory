@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import './Dashboard.css'
 
 class Dashboard extends Component {
-  // Note: Although I could have written the 
+  // Convert ISO 8601 date to local time and desired format
+  // Note: date-only strings (e.g. "1970-01-01") are parsed as time 00:00 UTC
   localDateTime = date => {
-    // set date to current time
-    // date-only strings (e.g. "1970-01-01") are treated as UTC, not local time
     let localTime = new Date(date)
 
-    // simple check for ISO 8601 date
+    // if date does not include a time
     if (! date.includes('T')) {
       let now = new Date()
-      // parse date
+      // split date
       let [ year, month, day ] = date.split('-')
+      // set date and local time
       localTime.setFullYear(year, month -1, day, now.getHours(), now.getMinutes())
     }
 
-    // format string
+    // format human readable string
     let options = { year: 'numeric', month: 'short', day: 'numeric' }
     localTime = localTime.toLocaleDateString('en-us', options)
     return localTime.replace(',', '')
