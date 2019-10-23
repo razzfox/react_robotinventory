@@ -6,7 +6,7 @@ import {
   NavLink
 } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faBox } from '@fortawesome/free-solid-svg-icons'
+import { faHistory, faRobot } from '@fortawesome/free-solid-svg-icons'
 import './InventoryManager.css'
 import Dashboard from './Dashboard.js'
 import Robots from './Robots.js'
@@ -123,7 +123,7 @@ class InventoryManager extends Component {
     <nav role="navigation">
       <section>
         <header className="InventoryManager-header">
-          <Link to="/" className="InventoryManager-logo">React App Demo 1</Link>
+          <h1><Link to="/" className="InventoryManager-logo"><span role="img" aria-label="robot">🤖</span> React App Demo 1</Link></h1>
         </header>
         
         <this.CompanyDropdown />
@@ -133,10 +133,10 @@ class InventoryManager extends Component {
         <ul>
           <NavLink
             to={this.props.match.url}
-            exact activeClassName="selected"><li><FontAwesomeIcon icon={faHome} size='lg' className='fa-icon' />Dashboard</li></NavLink>
+            exact activeClassName="selected"><li><FontAwesomeIcon icon={faHistory} size='lg' className='fa-icon' />Dashboard</li></NavLink>
           <NavLink
             to={`${this.props.match.url}${this.robotsPath}`}
-            exact activeClassName="selected"><li><FontAwesomeIcon icon={faBox} size='lg' className='fa-icon' />Robots</li></NavLink>
+            exact activeClassName="selected"><li><FontAwesomeIcon icon={faRobot} size='lg' className='fa-icon' />Robots</li></NavLink>
         </ul>
       </section>
     </nav>
