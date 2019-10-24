@@ -46,6 +46,8 @@ class InventoryManager extends Component {
     }
     // Note: the selected companyID is a property of the current route. it is not in the local state
 
+    this.fetchStateFromServer()
+    
     // Check current route for a valid companyID before mounting the component
     this.validateCompanyID(this.props.match.params.companyID)
   }
@@ -55,6 +57,48 @@ class InventoryManager extends Component {
     if (this.props.match.params.companyID!== prevProps.match.params.companyID) {
       this.validateCompanyID(this.props.match.params.companyID)
     }
+
+    // Note: must specify https
+    // let dataLocation = 'https://localhost/data', method = 'PUT'
+    let dataLocation = `https://${window.location.hostname}/data`, method = 'PUT'
+    let headers = new Headers({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    })
+
+    // console.log('state', this.state)
+
+    fetch(
+      new Request(dataLocation, {
+        method,
+        headers,
+        credentials: 'include',
+        body: JSON.stringify(this.state)
+      })
+    ).then(r=>{console.log(`received ${method} response`, r); return r.json()}).then(r=>console.log(`received ${method} state`, r)).catch(r=>console.log(r))
+  }
+
+  fetchStateFromServer = () => {
+    // Note: must specify https
+    // let dataLocation = 'https://localhost/data', method = 'GET'
+    let dataLocation = `https://${window.location.hostname}/data`, method = 'GET'
+    let headers = new Headers({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    })
+
+    // console.log('state', this.state)
+
+    fetch(
+      new Request(dataLocation, {
+        method,
+        headers,
+        credentials: 'include',
+      })
+    ).then(r=>r.json()).then(r=>{
+      console.log(`received ${method} state`, r)
+      this.setState(JSON.parse(r[0].body))
+    }).catch(r=>console.log(r))
   }
 
   validateCompanyID = companyID => {
