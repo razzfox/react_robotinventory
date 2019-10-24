@@ -169,7 +169,14 @@ class InventoryManager extends Component {
     <select
       id='selectedCompanyID'
       value={this.props.match.params.companyID}
-      onChange={this.updateSelectedCompanyID} >{
+      onChange={this.updateSelectedCompanyID} >
+        {/* Placeholder is the first selected disabled option */}
+        <option
+          selected
+          disabled
+          key={-1}
+          value={null}
+        >{'Company'}</option>{
         this.state.companyList.map(({name, id}) =>
           <option
             key={id}
