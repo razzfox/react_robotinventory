@@ -25,38 +25,23 @@ class InventoryManager extends Component {
     // normalized data: entities reference each other by id, as in a relational database
     // Note: location may also be made into a normalized ID
     this.state = {
-      companyList: [
-        {name:'Company One', id:'c1'},
-        {name:'Company Two', id:'c2'}
-      ],
-      eventList: [
-        {name:'Added Robot Zero', id:'e0', companyID:'c1', date:'2019-10-07', type:'Robots'},
-        {name:'Added Robot One', id:'e1', companyID:'c1', date:'2019-10-08', type:'Robots'},
-        {name:'Removed Robot Zero', id:'e2', companyID:'c1', date:'2019-10-10', type:'Robots'},
-        {name:'Added Robot Two', id:'e3', companyID:'c2', date:'2019-10-09', type:'Robots'},
-        {name:'Added Robot Three', id:'e4', companyID:'c2', date:'2019-10-09', type:'Robots'},
-        {name:'Added Robot Four', id:'e5', companyID:'c2', date:'2019-10-10', type:'Robots'}
-      ],
-      robotList: [
-        {name:'Robot One', id:'r1', companyID:'c1', location:'San Francisco'},
-        {name:'Robot Two', id:'r2', companyID:'c2', location:'San Francisco'},
-        {name:'Robot Three', id:'r3', companyID:'c2', location:'Tokyo'},
-        {name:'Robot Four', id:'r4', companyID:'c2', location:'Paris'}
-      ]
+      companyList: [],
+      eventList: [],
+      robotList: [],
     }
     // Note: the selected companyID is a property of the current route. it is not in the local state
 
     this.fetchStateFromServer()
     
     // Check current route for a valid companyID before mounting the component
-    this.validateCompanyID(this.props.match.params.companyID)
+    // this.validateCompanyID(this.props.match.params.companyID)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     // Validate new route
-    if (this.props.match.params.companyID!== prevProps.match.params.companyID) {
-      this.validateCompanyID(this.props.match.params.companyID)
-    }
+    // if (this.props.match.params.companyID !== prevProps.match.params.companyID) {
+    //   this.validateCompanyID(this.props.match.params.companyID)
+    // }
 
     // Note: must specify https
     // let dataLocation = 'https://localhost/data', method = 'PUT'
@@ -97,18 +82,47 @@ class InventoryManager extends Component {
       })
     ).then(r=>r.json()).then(r=>{
       console.log(`received ${method} state`, r)
-      this.setState(JSON.parse(r[0].body))
-    }).catch(r=>console.log(r))
+      let newState = JSON.parse(r[0].body)
+      this.setState(newState, this.validateCompanyID)
+    }).catch(r=>{
+      console.log(r)
+      // Fallback data
+      this.setState(
+        {
+          companyList: [
+            {name:'Company One', id:'c1'},
+            {name:'Company Two', id:'c2'}
+          ],
+          eventList: [
+            {name:'Added Robot Zero', id:'e0', companyID:'c1', date:'2019-10-07', type:'Robots'},
+            {name:'Added Robot One', id:'e1', companyID:'c1', date:'2019-10-08', type:'Robots'},
+            {name:'Removed Robot Zero', id:'e2', companyID:'c1', date:'2019-10-10', type:'Robots'},
+            {name:'Added Robot Two', id:'e3', companyID:'c2', date:'2019-10-09', type:'Robots'},
+            {name:'Added Robot Three', id:'e4', companyID:'c2', date:'2019-10-09', type:'Robots'},
+            {name:'Added Robot Four', id:'e5', companyID:'c2', date:'2019-10-10', type:'Robots'}
+          ],
+          robotList: [
+            {name:'Robot One', id:'r1', companyID:'c1', location:'San Francisco'},
+            {name:'Robot Two', id:'r2', companyID:'c2', location:'San Francisco'},
+            {name:'Robot Three', id:'r3', companyID:'c2', location:'Tokyo'},
+            {name:'Robot Four', id:'r4', companyID:'c2', location:'Paris'}
+          ]
+        },
+        this.validateCompanyID
+      )
+    })
   }
 
   validateCompanyID = companyID => {
+    // allow the loaded route to set the companyID after data has been fetched
+    companyID = companyID || this.props.match.params.companyID
     // if companyID is missing or invalid
     if (!companyID || ! this.state.companyList.find(c => c.id === companyID)) {
-      console.warn('companyID invalid, redirecting to first company', companyID)
+      console.log('Invalid or missing companyID, redirecting to first company', companyID)
       // get first company in list
-      companyID = this.state.companyList[0].id || ''
+      companyID = (this.state.companyList[0] && this.state.companyList[0].id) || ''
       // replace the matched route with a new companyID, and keep the same base path
-      this.props.history.replace(`${this.dashboardPath}${companyID}`)
+      companyID && this.props.history.replace(`${this.dashboardPath}${companyID}`)
     }
   }
 
