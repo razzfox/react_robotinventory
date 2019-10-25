@@ -54,10 +54,10 @@ class InventoryManager extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // Validate new route
-    // if (this.props.match.params.companyID !== prevProps.match.params.companyID) {
-    //   this.validateCompanyID(this.props.match.params.companyID)
-    // }
+    // Validate new route when clicking logo
+    if (this.props.match.params.companyID !== prevProps.match.params.companyID) {
+      this.validateCompanyID(this.props.match.params.companyID)
+    }
 
     // Note: must specify https
     // let dataLocation = 'https://localhost/data', method = 'PUT'
