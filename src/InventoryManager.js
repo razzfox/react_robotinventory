@@ -216,7 +216,7 @@ class InventoryManager extends Component {
 
       <section>
         <p>This app uses a cookie token to store your robot activity (IP is not stored)</p>
-        <p><span role="img" aria-label="wink">😉</span> Try reloading the page!</p>
+        <p><span role="img" aria-label="wink">😉</span> Try adding a robot and reloading the page!</p>
       </section>
     </nav>
 
