@@ -31,6 +31,11 @@ html, body, .InventoryManager {
   color: white;
 }
 
+.InventoryManager nav header span {
+  font-size: 4em;
+  vertical-align: middle;
+}
+
 .InventoryManager ul {
   list-style-type: none;
   padding-inline-start: 0;
@@ -97,29 +102,29 @@ html, body, .InventoryManager {
   padding-left: var(--left-panel);
 }
 
-.InventoryManager main div > header {
+.InventoryManager main :not(.eventCard) > header {
   height: 6em;
   display: flex;
   align-items: center;
 }
 
-.InventoryManager main div > header > * {
+.InventoryManager main :not(.eventCard) > header > * {
   margin: 0 2rem;
 }
 
-.InventoryManager main > div > header {
+.InventoryManager main > * > header {
   /* place border inside div */
   box-sizing: border-box;
   border-bottom: 1px solid var(--dark-line);
 }
 
-.InventoryManager main div > header :first-child {
+.InventoryManager main header :first-child {
   flex: 1;
   font-weight: 500;
   font-size: 2em;
 }
 
-.InventoryManager main div > h3 {
+.InventoryManager h3 {
   margin-left: 2rem;
   margin-top: 1.5rem;
   font-size: 1.25m;
