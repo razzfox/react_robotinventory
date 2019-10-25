@@ -37,6 +37,22 @@ class InventoryManager extends Component {
     // this.validateCompanyID(this.props.match.params.companyID)
   }
 
+  componentDidMount () {
+    // Create a select option value to be displayed on initial load.
+    // Placeholder is the first selected disabled option.
+    // React complains about using 'selected' manually, and does not allow
+    // defaultValue on controlled components, so I have to add this manually.
+
+    let option = document.createElement('option')
+    option.setAttribute('selected', true)
+    option.setAttribute('disabled', true)
+    option.setAttribute('value', null)
+    option.innerHTML = 'Company'
+
+    document.getElementById('selectedCompanyID').appendChild(option)
+    // console.log('option', option)
+  }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     // Validate new route
     // if (this.props.match.params.companyID !== prevProps.match.params.companyID) {
@@ -169,14 +185,7 @@ class InventoryManager extends Component {
     <select
       id='selectedCompanyID'
       value={this.props.match.params.companyID}
-      onChange={this.updateSelectedCompanyID} >
-        {/* Placeholder is the first selected disabled option */}
-        <option
-          selected
-          disabled
-          key={-1}
-          value={null}
-        >{'Company'}</option>{
+      onChange={this.updateSelectedCompanyID} >{
         this.state.companyList.map(({name, id}) =>
           <option
             key={id}
