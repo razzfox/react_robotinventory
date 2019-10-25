@@ -34,6 +34,7 @@ class Robots extends Component {
       this.headers.map(({ key }) =>
         <td key={robot.id + key}>{robot[key]}</td>
       )}<td key={robot.id + '_delete'}><button
+        type="button"
         onClick={event =>
           this.setState({
             deleteRobot: robot,
@@ -76,7 +77,8 @@ class Robots extends Component {
         <header>
           <h2>Robots</h2>
           <button
-           onClick={this.toggleAddRobotTray}>Add New Robot</button>
+            type="button" 
+            onClick={this.toggleAddRobotTray}>Add New Robot</button>
         </header>
 
         <table id='robotTable'>
@@ -112,7 +114,7 @@ class Robots extends Component {
               onClick={this.toggleDeleteRobotModal} /></div>
           </header>
           This will remove {this.state.deleteRobot.name} from its job.
-          <button onClick={this.deleteRobot}>Confirm</button>
+          <button type="button" onClick={this.deleteRobot}>Confirm</button>
         </ReactModal>
       </div>
     )

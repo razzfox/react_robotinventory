@@ -27,7 +27,6 @@
   padding: 0 1em;
 }
 
-
 .AddRobot section {
   padding: 0 2em;
 }
@@ -58,7 +57,6 @@
 .AddRobot input:hover, .AddRobot input:focus, .AddRobot select:hover, .AddRobot select:focus {
   border: 1px solid var(--link-color);
 }
-
 
 .AddRobot input {
   width: calc(var(--right-panel) - 4em);

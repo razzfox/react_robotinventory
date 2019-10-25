@@ -29,6 +29,8 @@ class AddRobot extends Component {
   }
 
   addRobot = event => {
+    // do not reload page when using form onSubmit
+    event.preventDefault()
     let robot = {
       name: this.state.name,
       location: this.state.location,
@@ -48,7 +50,15 @@ class AddRobot extends Component {
 
   render() {
     return (
-      <div className="AddRobot">
+      <form
+        // Taking advantage of form onSubmit autodetecting the enter key.
+        // This helps out people on mobile since mobile keyboards include a submit button,
+        // which is faster than closing the keyboard, and tapping the submit button, which
+        // is usually off screen when inputs are focused.
+        // Caveats: The onSubmit needs to call event.preventDefault() and all other buttons
+        // need type="button" attribute so that only one is type="submit" (default).
+        // That's one good reason to leave buttons to sumbit forms, and use div onClick otherwise.
+        onSubmit={this.addRobot} className="AddRobot">
         <header>
           <h2>Add New Robot</h2>
           <div className='closeButton'><FontAwesomeIcon size='2x' icon={faTimes} className='closeIcon'
@@ -90,11 +100,14 @@ class AddRobot extends Component {
 
         <section>
           <button
-            onClick={this.closeAddRobotTray} className='cancel'>Cancel</button>
+            type="button"
+            onClick={this.closeAddRobotTray}
+            className='cancel'>Cancel</button>
           <button
-            onClick={this.addRobot}>Add Robot</button>
+            type="submit"
+            >Add Robot</button>
         </section>
-      </div>
+      </form>
     )
   }
 }
